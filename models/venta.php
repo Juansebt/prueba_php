@@ -29,6 +29,18 @@ class Venta {
         }
     }
 
+    function getVentasProductos() {
+        try {
+            // Consulta para obtener todas las ventas realizadas, junto con la información del cliente, producto, tipo de producto y fabrica
+            $query = $this->conexion->getConection()->prepare("SELECT * FROM venta INNER JOIN cliente ON venta.clienteVenta = cliente.idCliente INNER JOIN producto ON venta.productoVenta = producto.idProducto INNER JOIN tipo_producto ON producto.tipoProducto = tipo_producto.idTipoProducto INNER JOIN fabrica ON tipo_producto.fabricaTipoProducto = fabrica.idFabrica");
+            $query->execute();
+            $response = $query->fetchAll(\PDO::FETCH_ASSOC);
+            return $response;
+        } catch (PDOException $e) {
+            return "Error al obtener las ventas: ". $e->getMessage();
+        }
+    }
+
     function getVentasById() {
         try {
             $query = $this->conexion->getConection()->prepare("SELECT * FROM venta WHERE idVenta=?");

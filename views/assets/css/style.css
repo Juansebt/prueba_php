@@ -1,0 +1,11 @@
+.nav-item {
+    font-size: 20px;
+}
+
+.footer {
+    height: 50px;
+    background-color: #2B3035;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+}

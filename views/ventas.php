@@ -1,34 +1,25 @@
 <?php include_once "./header.php" ?>
-    <h1>Ventas</h1>
-    <table class="table">
+<h1 class="text-center m-4">Ventas</h1>
+<div class="py-4 mx-2 card">
+    <table class="table table-striped-columns table-hover">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th class="text-center">#</th>
+                <th class="text-center">Código</th>
+                <th class="text-center">Producto</th>
+                <th class="text-center">Tipo de producto</th>
+                <th class="text-center">Fabrica</th>
+                <th class="text-center">Cliente</th>
+                <th class="text-center">Venta</th>
+                <th class="text-center">Observación</th>
+                <th class="text-center"></th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
+        <tbody id="tblVentas">
         </tbody>
     </table>
-</body>
+</div>
+<?php include_once "./footer.php" ?>
+<script src="./assets/js/venta.js"></script>
 
 </html>

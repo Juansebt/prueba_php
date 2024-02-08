@@ -1,12 +1,9 @@
 <?php
 include_once("../../models/venta.php");
 
-$id = $_GET["idVenta"];
-
 $ventaModel = new \modelo\Venta();
-$ventaModel->setIdVenta($id);
 
-$response = $ventaModel->getVentasById();
+$response = $ventaModel->getVentasProductos();
 
 echo json_encode($response);
 

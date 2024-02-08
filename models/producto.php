@@ -21,7 +21,7 @@ class Producto {
 
     function getProductos() {
         try {
-            $query = $this->conexion->getConection()->prepare("SELECT * FROM producto");
+            $query = $this->conexion->getConection()->prepare("SELECT * FROM producto INNER JOIN tipo_producto ON producto.tipoProducto = tipo_producto.idTipoProducto");
             $query->execute();
             $response = $query->fetchAll(\PDO::FETCH_ASSOC);
             return $response;
