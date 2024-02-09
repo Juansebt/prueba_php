@@ -10,10 +10,17 @@ class Cliente {
     private $nombreCliente;
     private $conexion;
 
+    /**
+     * Función para obtener la conexión a la base de datos e inicializar el objeto de la clase cliente
+     */
     function __construct() {
         $this->conexion = new \Conexion();
     }
 
+    /**
+     * Función que ejecuta la consulta para obtener todos los registros de la tabla cliente
+     * @return array|string
+     */
     function getClientes() {
         try {
             $query = $this->conexion->getConection()->prepare("SELECT * FROM cliente");
@@ -25,6 +32,11 @@ class Cliente {
         }
     }
 
+    /**
+     * Función que ejecuta la consulta para obtener los datos de un cliente
+     * de acuerdo a su id
+     * @return array|string
+     */
     function getClienteById() {
         try {
             $query = $this->conexion->getConection()->prepare("SELECT * FROM cliente WHERE idCliente=?");

@@ -15,10 +15,17 @@ class Producto {
     private $tipoProducto;
     private $conexion;
 
+    /**
+     * Función para obtener la conexión a la base de datos e inicializar el objeto de la clase producto
+     */
     function __construct() {
         $this->conexion = new \Conexion();
     }
 
+    /**
+     * Función que ejecuta la consulta para obtener todos los registros de la tabla productos
+     * @return array|string
+     */
     function getProductos() {
         try {
             $query = $this->conexion->getConection()->prepare("SELECT * FROM producto INNER JOIN tipo_producto ON producto.tipoProducto = tipo_producto.idTipoProducto");
@@ -30,6 +37,11 @@ class Producto {
         }
     }
 
+    /**
+     * Función que ejecuta la consulta para obtener los datos de un producto
+     * de acuerdo a su id
+     * @return array|string
+     */
     function getProductoById() {
         try {
             $query = $this->conexion->getConection()->prepare("SELECT * FROM producto WHERE idProducto=?");
@@ -39,6 +51,23 @@ class Producto {
             return $response;
         } catch (PDOException $e) {
             return "Error al obtener el producto por el id: ". $e->getMessage();
+        }
+    }
+
+    /**
+     * Función que ejecuta la consulta para obtener los datos de un producto
+     * de acuerdo a su nombre
+     * @return array|string
+     */
+    function getProductoByName() {
+        try {
+            $query = $this->conexion->getConection()->prepare("SELECT * FROM producto WHERE nombreProducto=?");
+            $query->bindParam(1, $this->nombreProducto);
+            $query->execute();
+            $response = $query->fetchAll(\PDO::FETCH_ASSOC);
+            return $response;
+        } catch (PDOException $e) {
+            return "Errror al obtener el producto por el nombre: ". $e->getMessage();
         }
     }
 

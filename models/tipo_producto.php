@@ -11,10 +11,18 @@ class Tipo_producto {
     private $fabricaTiposProducto;
     private $conexion;
 
+    /**
+     * Función para obtener la conexión a la base de datos e inicializar el objeto de la clase tipo_producto
+     */
     function __construct() {
         $this->conexion = new \Conexion();
     }
 
+    /**
+     * Función que ejecuta la consulta para obtener todos los registros
+     * de la tabla tipo_producto
+     * @return array|string
+     */
     function getTiposProductos() {
         try {
             $query = $this->conexion->getConection()->prepare("SELECT * FROM tipo_producto");
@@ -26,6 +34,11 @@ class Tipo_producto {
         }
     }
 
+    /**
+     * Función que ejecuta la consulta para obtener los datos de un registro
+     * de la tabla tipo_producto de acuerdo a su id
+     * @return array|string
+     */
     function getTipoProductosById() {
         try {
             $query = $this->conexion->getConection()->prepare("SELECT * FROM tipo_producto WHERE idTipoProducto=?");

@@ -10,10 +10,17 @@ class Fabrica {
     private $nombreFabrica;
     private $conexion;
 
+    /**
+     * Función para obtener la conexión a la base de datos e inicializar el objeto de la clase fabrica
+     */
     function __construct() {
         $this->conexion = new \Conexion();
     }
 
+    /**
+     * Función que ejecuta la consulta para obtener todos los registros de la tabla fabrica
+     * @return array|string
+     */
     function getFabricas() {
         try {
             $query = $this->conexion->getConection()->prepare("SELECT * FROM fabrica");
@@ -25,6 +32,11 @@ class Fabrica {
         }
     }
 
+    /**
+     * Función que ejecuta la consulta para obtener los datos de una fabrica
+     * de acuerdo a su id
+     * @return array|string
+     */
     function getFabricaById() {
         try {
             $query = $this->conexion->getConection()->prepare("SELECT * FROM fabrica WHERE idFabrica=?");

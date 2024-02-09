@@ -1,7 +1,7 @@
 <?php
 include_once("../../models/venta.php");
 
-$id = $_POST["idVenta"];
+$id = $_GET["idVenta"];
 
 $ventaModel = new \modelo\Venta();
 $ventaModel->setIdVenta($id);
