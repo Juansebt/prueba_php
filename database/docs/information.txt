@@ -1,0 +1,5 @@
+model.mwb ----> script workbench databasde
+
+script_createDB ---> create database - tables
+
+script_insertDB ---> registros de las tablas
